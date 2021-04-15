@@ -2,9 +2,9 @@
 
 用于同步论文管理
 
-![image-20210413223409786](/home/collebt/.config/Typora/typora-user-images/image-20210413223409786.png)
 
 
+<img src="image-20210414145118464.png" alt="image-20210414145118464" style="zoom: 80%;" />
 
 账户：collebt
 
@@ -14,7 +14,7 @@
 
 - 打开坚果云网页->右上角账号信息->安全选项
 
-![image-20210413223532794](/home/collebt/.config/Typora/typora-user-images/image-20210413223532794.png)
+![image-20210414144946841](image-20210414144946841.png)
 
 往zotero中填写服务器地址，账号，密码即可。
 
