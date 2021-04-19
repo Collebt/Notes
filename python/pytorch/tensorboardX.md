@@ -44,6 +44,10 @@ tensorboard --logdir=mylogdir
 
  
 
+用于查看网络变量流程图
+
+
+
 对于不同的操作/网络结构设计，在graph上是不一样的，这个后面做训练去熟悉一些简单的可视化，如多输入多输出，多层，迭代，Siames等。
 
 [网络教程]https://github.com/lanpa/tensorboardX/blob/master/examples/demo_graph.py

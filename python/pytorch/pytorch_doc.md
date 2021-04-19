@@ -22,7 +22,7 @@ numpy的operands是变长参数列表
 
 torch的operands是列表
 
-### 注意事项
+### 注意事项expand
 
 在输出的时候要注意不同的顺序可以使用广播简化后面的操作
 
@@ -48,7 +48,7 @@ sum rows: $b = \sum_i A_{ij}$: `b = torch.einsum('ij-i', A)`
 
 点积：
 
-- 向量点乘: $c = a_ibi$: `c = torch.einsum('i,i->', [a,b])`
+- 向量点乘: $c = a_ib_i$: `c = torch.einsum('i,i->', [a,b])`
 - 矩阵点乘: $C = A_{ij}B_{ij}$: `C = torch.einsum('ij,ij->ij', [A,B])`
 - 向量外积: $C_{ij} = a_i b_j$: `C = torch.einsum('i,j->ij', [a, b])`
 
@@ -121,7 +121,7 @@ d = a[:,None,None]#d.shape=(2,1,1,3,4)
 
 
 
-## Tensor的维度顺序
+### Tensor的维度顺序
 
 
 
@@ -159,7 +159,7 @@ TensorRT中的tensor 通道顺序： NCHW
 
 
 
-
+### 矩阵广播操作repeat
 
 要注意在torch和numpy中的repeat扩展矩阵的参数是不相同的，最好固定一种使用方式。numpy中可以在ipad上的jupyter使用，
 
