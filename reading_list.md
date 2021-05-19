@@ -5,14 +5,6 @@ https://stackoverflow.com/questions/26998223/what-is-the-difference-between-cont
 
 https://zhuanlan.zhihu.com/p/64551412
 
-## TensorboardX
-
-- add_graph
-[example](https://github.com/lanpa/tensorboardX/blob/master/examples/demo_graph.py)
-
-tourtial
-[get start](https://www.tensorflow.org/tensorboard/get_started)
-
 
 
 ## Deep Set Learning

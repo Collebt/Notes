@@ -1,16 +1,19 @@
 # TensorboardX
 
-使用
+- add_graph
+    [example](https://github.com/lanpa/tensorboardX/blob/master/examples/demo_graph.py)
 
-绘制网络节点图
+- tourtial
+    [get start](https://www.tensorflow.org/tensorboard/get_started)
+
+
+
+**绘制网络节点图**
 
 ```python
 fromTensorboardX import SummaryWriter
 
- 
-
 with SummaryWriter(comment='LinearInLinear') as w:
-
   w.add_graph(LinearInLinear(), dummy_input, True)
 
  
@@ -18,12 +21,22 @@ with SummaryWriter(comment='LinearInLinear') as w:
 
  
 
+**绘制同一行的图像**
+
+```python
+#使用统一个文件夹目录"train"
+tfboard_writer.add_scalars(
+    'train/loss', loss_dict, epoch * cfg.TRAIN.EPOCH_ITERS + iter_num)
+tfboard_writer.add_scalars(
+    'train/training accuracy', accdict, epoch * cfg.TRAIN.EPOCH_ITERS + iter_num )
+```
+
 得到目录后 
 
 进入runs目录， 输入
 
 ```bash
-tensorboard --logdir=mylogdir
+tensorboard --logdir mylogdir
 ```
 
 

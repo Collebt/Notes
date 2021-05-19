@@ -26,6 +26,7 @@ git config --global user.email ”1054541662@qq.com“
 
 ```bash
 git remote -n name git@xxxx.git
+git remote add name git@xxxx.git #create
 ```
 
 

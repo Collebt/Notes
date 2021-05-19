@@ -103,13 +103,17 @@ out3 = in.squeeze(2) #报错，in的第3维尺寸为4，不可删除
 
 
 
-### 张量增加维度使用None
+### 张量增加维度使用unsqueeze()
 
 使用范围：在ndarray和tensor类型中可以使用，list无法使用（会报错）
 
- 
+>`[None, ...]` is **numpy notation** for `.unsqueeze(0)`. The two are equivalent. The version with advanced indexing might be a  bit slower because it has more checking to do to find out exactly what  you want to do. 
 
-加入None会在对应维度位置增加一维
+None和unsqueeze()是等价的，但由于unsqueeze()明确了插入的维度，因此速度更快，易读性更好
+
+### None用于增加维度
+
+加入None会在对应维度位置增加一维，但是由于没有显式标明增加的维度，导致可读性较差。
 
 ```python
 a = np.ones([2,3,4])
@@ -286,7 +290,69 @@ if `batch1` : $(b \times n \times m)$tensor， `batch2` :$(b \times n \times m)$
 
 This function does not ==broadcast==. For broadcasting matrix products, see `torch.matmul()`
 
+---
 
+## nn.Linear 和 nn.Conv1d()的比较
+
+`nn.Conv1d` with a kernel size of 1 and `nn.Linear` give exactly t**he same results**. The only differences are the  initialization procedure and how the operations are applied (which has  some effect on the speed). Note that using a linear layer should be  faster as it is implemented as a simple matrix multiplication (+ adding a broadcasted bias vector)
+
+@RobinFrcd your answers are either different due to `MaxPool1d` or due to the different initialization procedure.
+
+Here are a few experiments to prove my claims:
+
+```python
+def count_parameters(model):
+    """Count the number of parameters in a model."""
+    return sum([p.numel() for p in model.parameters()])
+
+conv = torch.nn.Conv1d(8,32,1)
+print(count_parameters(conv))
+# 288
+
+linear = torch.nn.Linear(8,32)
+print(count_parameters(linear))
+# 288
+
+print(conv.weight.shape)
+# torch.Size([32, 8, 1])
+print(linear.weight.shape)
+# torch.Size([32, 8])
+
+# use same initialization
+linear.weight = torch.nn.Parameter(conv.weight.squeeze(2))
+linear.bias = torch.nn.Parameter(conv.bias)
+
+tensor = torch.randn(128,256,8)
+permuted_tensor = tensor.permute(0,2,1).clone().contiguous()
+
+out_linear = linear(tensor)
+print(out_linear.mean())
+# tensor(0.0067, grad_fn=<MeanBackward0>)
+
+out_conv = conv(permuted_tensor)
+print(out_conv.mean())
+# tensor(0.0067, grad_fn=<MeanBackward0>)
+```
+
+Speed test:
+
+```python
+%%timeit
+_ = linear(tensor)
+# 151 µs ± 297 ns per loop
+
+%%timeit
+_ = conv(permuted_tensor)
+# 1.43 ms ± 6.33 µs per loop
+```
+
+结论: 使用linear速度更快
+
+
+
+
+
+---
 
 ## 参数初始化
 
