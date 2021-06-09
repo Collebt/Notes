@@ -34,3 +34,9 @@
 Function 'SqrtBackward' returned nan values in its 0th output.
 ```
 
+
+
+修改了Loss的设计,并且对除以样本数得到平均loss.  但是梯度下降速度较慢. 很多不是保持线性下降的.
+
+要把问题想清楚,这样训练的网络到底可不可以返传得到结果.
+
