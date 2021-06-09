@@ -55,3 +55,7 @@ numpy不能读取cuda tensor，需要转变成cpu tensor
 32是中间隐藏层的大小，dim=2的1就是batch的channel数，channel数量太少（只有1个）导致无法进行batchNorm。
 
 是输入样本大小波动产生的问题，如果设计网络的时候有些样本没有出现这种错误，那要往前去查找导致生成的channel只有1的情况。
+
+
+
+# 
