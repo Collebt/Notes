@@ -149,23 +149,22 @@ def compute_optimal_transport(M, r, c, lam, epsilon=1e-8):
 
 迭代后每行每列满足约束，但是结果比较分散。下图分别为每行求和，每列求和，结果迭代后接近约束（每行每列求和为1）。![image-20210305173127430](image-20210305173127430.png)
 
-<img src="../image-20210305173218464.png" alt="image-20210305173218464" style="zoom:25%;" />
+<img src="../image-20210305173218464.png" alt="image-20210305173218464" style="zoom: 33%;" />
 
 但是直接求和的归一化效果却不太好，考虑使用每列softmax函数处理，beta的范围从[1,10]结果如下图所示
 $$
 \text{softmax}(x_{ij}) = \frac{exp(\beta x_{ij})}{\sum_i exp(\beta x_{ij})}
 $$
 
-
-![image-20210305173651772](../image-20210305173651772.png)
+<img src="../image-20210305173651772.png" alt="image-20210305173651772" style="zoom:33%;" />
 
 最右边的图是$\beta $为50 的结果，使用每一列使用softmax，这样会导致每行的约束不成立，因此想到在迭代过程中就使用softmax。
 
-![image-20210305173948062](../image-20210305173948062.png)
+<img src="../image-20210305173948062.png" alt="image-20210305173948062" style="zoom: 33%;" />
 
 于是考虑到上面的熵正则化
 
-![image-20210305175329440](../image-20210305175329440.png)
+<img src="../image-20210305175329440.png" alt="image-20210305175329440" style="zoom: 33%;" />
 
 在熵正则化处理后得到中间图，对每一列进行softmax后得到满足一一对应的匹配图（$\lambda = 2, \beta = 50$）
 
@@ -179,7 +178,7 @@ $$
 
 下图为$\lambda$的在范围[1,10]对矩阵的影响，$\lambda$作为熵正则化因子
 
-![image-20210305171100355](../image-20210305171100355.png)
+<img src="../image-20210305171100355.png" alt="image-20210305171100355" style="zoom:33%;" />
 
 
 

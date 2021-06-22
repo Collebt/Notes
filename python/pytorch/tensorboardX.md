@@ -39,6 +39,12 @@ tfboard_writer.add_scalars(
 tensorboard --logdir mylogdir
 ```
 
+- 指定端口和文件夹
+
+```
+tensorboard --logdir=/tmp  --port=8008
+```
+
 
 
 ## add_scalar

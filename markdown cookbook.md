@@ -184,3 +184,37 @@ c - d	&	=	&	b - 2a
 \end{array}
 ```
 
+
+
+# Keyboard  
+
+<kbd>Ctrl</kbd>+<kbd>C</kbd>
+
+```
+<kbd>Ctrl</kbd> +  <kbd>C</kbd>
+```
+
+
+
+# Graph
+
+```mermaid
+graph LR
+A[INPUT b] --> B(GET ABS)
+B --> C{a=b%2, }
+C --> |a=1| D[ODD]
+C --> |a=0| E[EVEN]
+
+```
+
+```mermaid
+graph TB
+A(START) ==> B[ALL pc] -->cond{if ping throught?}
+cond-->no-->B
+cond-->yes
+cond --> B
+yes-->e(end)
+```
+
+
+
