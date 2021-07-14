@@ -35,7 +35,7 @@
 **首先安装**
 
 ```
-brew install tmux
+sudo apt-get install tmux
 ```
 
 我在安装的时候并没有遇到什么问题。
