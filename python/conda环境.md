@@ -52,3 +52,11 @@ albumentations==0.5.1 --no-binary=imagug,albumentations
 ray>=1.0.1
 ```
 
+
+
+
+
+## 复制环境
+
+1. 拷贝环境到anacondas3/envs
+2. 打开 `conda create -n NewName --clone ~/path(环境的位置)`

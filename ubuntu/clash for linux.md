@@ -1,12 +1,12 @@
 # 在实验室使用代理
 
-## window系统
+## window系统使用代理
 
 - <kbd>win</kbd>+<kbd>I</kbd>打开**设置**, 选择"网络和Internet" --> "代理" --> "手动设置代理"
 - 输入地址: 90.0.0.21
 - 端口 7890
 
-## ubuntu系统
+  ## ubuntu系统使用代理
 
 - 命令行配置代理
 
@@ -29,7 +29,7 @@ export https_proxy="http://90.0.0.21:7890"
 
 ## 软件安装
 
-- 下载64位的压缩包（因为我是64位系统）clash for linux下载地址：https://github.com/Dreamacro/clash/releases
+- 下载64位的amd64压缩包（因为我是64位系统）clash for linux下载地址：https://github.com/Dreamacro/clash/releases
 
 - 下载到Downloads文件夹
 - 解压文件

@@ -8,7 +8,7 @@
 
 les/ssh2-streams/lib/sftp.js
 
-在每一个`optionsza = false;`下面增加:
+在每一个`options.emitClose = false`下面增加:
 
 ```
 options.autoDestroy = false;

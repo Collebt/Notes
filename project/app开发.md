@@ -572,3 +572,25 @@ rm -rf /swapfile
 | 逻辑警告（逻辑错误影响目标结果，但软件不崩溃） |          |          |          |          |
 | 逻辑崩溃（逻辑错误导致软件崩溃）               |          |          |          |          |
 
+
+
+
+
+运行程序 运行后台
+
+```
+python manage.py runserver 0.0.0.0:8888
+```
+
+初始化数据库
+
+```
+~/redis-6.2.3/src# redis-server
+```
+
+运行数据库
+
+```
+:~/projects/apps/faceswap# celery -A celery_tasks.main worker -B -l info --beat
+```
+

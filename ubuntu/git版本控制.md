@@ -19,7 +19,7 @@
 
 ```bash
 git config --global user.name "Collebt"
-git config --global user.email ”1054541662@qq.com“
+git config --global user.email "1054541662@qq.com"
 ```
 
 **与远程仓库建立连接**
