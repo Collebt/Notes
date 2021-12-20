@@ -17,6 +17,7 @@ anno_dict_2["keypoints"] = [kp for kp in anno_dict_2["keypoints"] if kp["name"] 
    - visualization. 如图所示，只有两张图都出现的语义点才被保留，右图的右前腿由于在左图中被遮挡了，该点会在预处理中被去掉了。
      
      <img src="image-20210722131437375.png" alt="image-20210722131437375" style="zoom:50%;" />
+     ![ fig](image-20210722131437375.png "     this is a picture")
 2. 有监督学习需要大量人工标注样本，训练匹配模型需要对所有语义点进行一一匹配，工作量大而且容易出错。
 3. 由于坐标点的变化会生成不一致的图结构。
 
@@ -31,7 +32,7 @@ anno_dict_2["keypoints"] = [kp for kp in anno_dict_2["keypoints"] if kp["name"] 
 
 
 
-###难点：
+### 难点：
 
 1. 如何让模型学习到有多少个缺失的特征点
 2. 如何保证图的同构
@@ -60,14 +61,14 @@ anno_dict_2["keypoints"] = [kp for kp in anno_dict_2["keypoints"] if kp["name"] 
 
 输入：特征点坐标$V$，图像$I$。
 
-输出：两个去除随机节点的图$G_s=\{V_s,V_s',E_s\} $和$G_t=\{V_t,V_t',E_t\} $
+输出：两个去除随机节点的图$G_s=\{V_s,V_s',E_s\}$ 和$G_t=\{V_t,V_t',E_t\}$
 
 详细步骤：
 
 1. 按照给定删除率$\beta$得到随机的待补全节点$V'=f_{drop}(V, \beta ),V'\in\{V'_s,V'_t\}$
 2. 在源点集中划分保留点$V_s,V_t$和待补全点$V'_s,V'_t$：$V_s = V/V'_s, V_t = V/V'_t$
 3. 使用三角化得到图结构: $E_s = \text{Delaunay}(V_s)$，$E_t = \text{Delaunay}(V_t)$
-4. 输出图$G_s=\{V_s,V_s',E_s\} $和$G_t=\{V_t,V_t',E_t\} $
+4. 输出图$G_s=\{V_s,V_s',E_s\}$和$G_t=\{V_t,V_t',E_t\}$
 5. 记录重叠节点的匹配关系，最终用于计算Loss
 
 

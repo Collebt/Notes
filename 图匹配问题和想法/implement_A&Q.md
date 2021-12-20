@@ -1,6 +1,6 @@
 # The problem when implement
 
-
+[[20211126223752]] linke-graph.md
 
 
 
@@ -54,7 +54,7 @@ finished the edgebuilder
 
 gt_mat
 
-![image-20210807173415232](image-20210807173415232.png)<img src="image-20210807173545201.png" alt="image-20210807173545201" style="zoom: 67%;" />
+![image-20210807173415232](image-20210807173415232.png)<img src="image20210807173545201.png" alt="image-20210807173545201" style="zoom: 67%;" />
 
 
 
