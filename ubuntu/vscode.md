@@ -34,7 +34,7 @@ options.autoDestroy = false;
 
 在.ssh/.config中进行配置
 
-```
+```yaml
 Host microsoft_in
     HostName 90.0.0.245
     User lihaoyuan
