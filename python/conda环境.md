@@ -52,7 +52,19 @@ albumentations==0.5.1 --no-binary=imagug,albumentations
 ray>=1.0.1
 ```
 
+## 用conda安装requirements.txt的内容
 
+```
+conda install --yes --file requirements.txt
+```
+
+
+
+## 用pip安装requirements.txt
+
+```
+pip install -r requirements.txt
+```
 
 
 
