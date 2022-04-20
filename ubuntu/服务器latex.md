@@ -191,7 +191,7 @@ $ docker exec sharelatex /bin/bash -c "cd /var/www/sharelatex; grunt user:delete
 
 - 修改映射服务器地址
 
-vim frps.ini
+vim **frpc**.ini
 
 ```ini
 server_addr = 139.224.114.64
@@ -201,13 +201,22 @@ token = 861024
 
 [overleaf]
 type = tcp
-local_ip = 127.0.0.1
+local_ip = 127.0.0.1  sdkkjs
 local_port = 8888
 remote_port = 8888
 ```
 
 
 
-- 启动frp
+- 后台运行启动frp
 
+```
 ./frpc -c frpc.ini
+```
+- 关闭进程
+
+```
+ps -aux|grep frp |grep -v grep
+kill -9 [对应port]
+```
+
