@@ -66,3 +66,56 @@ vgg16.features[36].register_forward_hook(hook)  # relu5_1
 
 
 
+
+
+## T=0的时候无法训练
+
+T=0的时候是没有计算用上网络的，所以是无法训练的（论文里面的T=0是无法复现），所以应该是T=1的情况（只用了网络一次）并没有使用迭代的模块，看一下结果如何
+
+
+
+T1的时候就可以达到76.77的精度。
+
+
+
+
+
+pretrain的效果一般，几乎可以不用pretrain
+
+
+
+| 实验 batch=128              | SL    |
+| --------------------------- | ----- |
+| sigma                       | 76.2  |
+| sigma（T=0）原作论文        | 76.0  |
+| sigma T=0 w/r w/pretrain    | 77.0  |
+| sigma T=0 w/r no-pretrain   | 76.62 |
+| sigma sinkhorn-no-noisy     | 73.48 |
+| sigma no-r  no-pre          | 73.99 |
+| sigma no-r                  | 75.39 |
+| sigma quad                  | 75.97 |
+| sigma no-r sinkhorn-nonoisy | 74.66 |
+| sigma -r(-1,-2)             | 76.89 |
+
+
+
+| 实验 link             | SL    |
+| --------------------- | ----- |
+| link w/noisy sinkhorn | 73.39 |
+| link w/o noisy        | 73.85 |
+|                       |       |
+|                       |       |
+|                       |       |
+
+gumble-sinkhorn 可以加3点， r可以加1点，pretrain可以加0.4， iterative可以加0.5
+
+ 
+
+发现sigma的reward general里面的平均是按（1，2）维度，测试一下改为（-1，-2）维度。
+
+
+
+整个实验做下来发现，精度的提升点主要在gumble-sinkhorn上面，其他的reward、pretrain、iterative都是小创新点。
+
+
+

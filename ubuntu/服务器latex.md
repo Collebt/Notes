@@ -31,7 +31,7 @@
 
    ```bash
    sudo apt-get install docker-ce docker-ce-cli containerd.io
-   pip install docker-compos
+   pip install docker-compose
    ```
 
    查看版本，检查是否安装成功 
@@ -46,7 +46,7 @@
 2. 安装overleaf
 
    ```
-   docker pull sharelatex/sharelatex
+   sudo docker pull sharelatex/sharelatex
    ```
 
 3. 获取配置
@@ -58,10 +58,24 @@
 4. 在yaml文件目录下创建container
 
    ```
-   docker-compose up -d #只运行一次，否则可能会覆盖原本的container
+   sudo docker-compose up -d #只运行一次，否则可能会覆盖原本的container
    ```
 
-5. 安装完整texlive
+```
+docker run -d --name shareredis redis:latest
+docker run -d --name sharemongo mongo:latest
+docker run -d \
+  -v ~/sharelatex_data:/var/lib/sharelatex \
+  -p 5000:80 \
+  --env SHARELATEX_MONGO_URL=mongodb://mongo/sharelatex --env SHARELATEX_REDIS_HOST=redis \
+  --link sharemongo:mongo --link shareredis:redis \
+  --name=sharelatex \
+  sharelatex/sharelatex
+```
+
+
+
+1. 安装完整texlive
 
    ```
    docker exec -it sharelatex bash #进入container
@@ -79,8 +93,9 @@
 
    
 
-6. 修改服务器输出端口（在已经启动的情况下）
+2. 修改服务器输出端口（在已经启动的情况下）
 
+   1. 退出容器 `root@ed09e4490c57:/# exit`
    1. Stop the container (`docker stop <container_name>`).
    2. Change the file `config.v2.json` and `hostconfig.json`.
    3. Restart your docker engine (`service docker restart`).
@@ -133,6 +148,12 @@
 
 
 
+进入容器
+
+```
+docker exec -it <容器 ID> /bin/bash 
+```
+
 
 
 ## latex 管理员创建用户
@@ -170,9 +191,7 @@ $ docker exec sharelatex /bin/bash -c "cd /var/www/sharelatex; grunt user:delete
 
 优势：速度更快，网络更加稳定。档案维护方便
 
-不足：实验室有时候局域网不够稳定，没有专人维护，备份麻烦。在校外需要easyconnect
-
-
+不足（这个通过frp解决了）：实验室有时候局域网不够稳定，没有专人维护，备份麻烦。在校外需要easyconnect
 
 [Creating and managing users · overleaf/overleaf Wiki (github.com)](https://github.com/overleaf/overleaf/wiki/Creating-and-managing-users)
 
@@ -202,7 +221,7 @@ token = 861024
 [overleaf]
 type = tcp
 local_ip = 127.0.0.1  sdkkjs
-local_port = 8888
+local_port = 8888 #这里初始是80端口
 remote_port = 8888
 ```
 
