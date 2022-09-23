@@ -38,8 +38,6 @@
 sudo apt-get install tmux
 ```
 
-我在安装的时候并没有遇到什么问题。
-
  
 
 1. open session
@@ -129,3 +127,24 @@ tmux new -s basic
 关于Tmux的三个核心概念(session、window和pane)及其基本用法已经介绍完毕。接下来的是一些个性化配置和奇技淫巧，包括重新绑定快捷键、自定义快捷键、UI样式、鼠标支持、复制粘贴等等，这些可配置的高级功能也是Tmux受人推崇的原因。Tmux配置文件推荐放在~/.tmux.conf文件中，避免某个用户修改配置影响到其他用户，修改配置文件后要经过reload操作才会在已打开session中生效。
 
 ![Pane O  Pane 1  Pane 2  Window O  Pane O  pane 1  Window 1  Pane O  Pane 2  Pane 1  Window 2  Session  @Finder ](clip_image001.png)
+
+
+
+## 关闭其他远程用户
+
+在多个用户连接到同一个session中的时候，会出现窗口缩小的情况，所以需要远程中断其他用户的连接。
+
+
+
+<kbd>Ctrl</kbd>+<kbd>B</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>
+
+```
+<prefix> + D #注意D要大写
+```
+
+选择要关闭的用户，<kbd>Enter</kbd>关闭对应连接。
+
+
+
+
+

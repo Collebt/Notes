@@ -1,4 +1,4 @@
-# 局域网latex多人在线latex
+# 局域网overleaf配置
 
 最近想用latex做多人周报，考虑到以后写论文都要用latex，而且周报和所以想统一
 
@@ -60,22 +60,24 @@
    ```
    sudo docker-compose up -d #只运行一次，否则可能会覆盖原本的container
    ```
+   
+   或者可以直接用指令创建容器
 
-```
-docker run -d --name shareredis redis:latest
-docker run -d --name sharemongo mongo:latest
-docker run -d \
-  -v ~/sharelatex_data:/var/lib/sharelatex \
-  -p 5000:80 \
-  --env SHARELATEX_MONGO_URL=mongodb://mongo/sharelatex --env SHARELATEX_REDIS_HOST=redis \
-  --link sharemongo:mongo --link shareredis:redis \
-  --name=sharelatex \
-  sharelatex/sharelatex
-```
+   ```
+   docker run -d --name shareredis redis:latest
+   docker run -d --name sharemongo mongo:latest
+   docker run -d \
+    -v ~/sharelatex_data:/var/lib/sharelatex \
+    -p 5000:80 \
+    --env SHARELATEX_MONGO_URL=mongodb://mongo/sharelatex --env SHARELATEX_REDIS_HOST=redis \
+    --link sharemongo:mongo --link shareredis:redis \
+    --name=sharelatex \
+    sharelatex/sharelatex
+   ```
 
 
 
-1. 安装完整texlive
+5. 进入容器并安装完整texlive
 
    ```
    docker exec -it sharelatex bash #进入container
@@ -91,9 +93,9 @@ docker run -d \
    tlmgr install scheme-full & 
    ```
 
-   
 
-2. 修改服务器输出端口（在已经启动的情况下）
+
+6. 修改服务器输出端口（在已经启动的情况下）
 
    1. 退出容器 `root@ed09e4490c57:/# exit`
    1. Stop the container (`docker stop <container_name>`).
@@ -102,7 +104,8 @@ docker run -d \
    4. Restart the container (`docker restart <container_name>`).
 
    ```json
-   vim config.v2.json
+   vim /var/lib/docker/containers/ID/config.v2.json #docker
+   vim /var/snap/docker/common/var-lib-docker/containers/ID/config.v2.json #docker #docker.socket
    
    "Config": {
        ....
@@ -148,13 +151,15 @@ docker run -d \
 
 
 
-进入容器
+进入容器方法
 
-```
+   ```
 docker exec -it <容器 ID> /bin/bash 
-```
+   ```
 
+## 简单配置中文环境
 
+https://yxnchen.github.io/technique/Docker%E9%83%A8%E7%BD%B2ShareLaTeX%E5%B9%B6%E7%AE%80%E5%8D%95%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%87%E7%8E%AF%E5%A2%83/#%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%87%E5%86%99%E4%BD%9C%E7%8E%AF%E5%A2%83
 
 ## latex 管理员创建用户
 
@@ -187,18 +192,7 @@ $ docker exec sharelatex /bin/bash -c "cd /var/www/sharelatex; grunt user:delete
 
 
 
-## 在线latex的优势
 
-优势：速度更快，网络更加稳定。档案维护方便
-
-不足（这个通过frp解决了）：实验室有时候局域网不够稳定，没有专人维护，备份麻烦。在校外需要easyconnect
-
-[Creating and managing users · overleaf/overleaf Wiki (github.com)](https://github.com/overleaf/overleaf/wiki/Creating-and-managing-users)
-
-## 目前的问题和解决方案
-
-1. github的同步还没有办法实现
-2. texlive版本的控制没有实现
 
 
 
@@ -239,3 +233,105 @@ ps -aux|grep frp |grep -v grep
 kill -9 [对应port]
 ```
 
+
+
+## 数据备份
+
+首先找到配置路径中的sharelatex-data, mongo_data, redis_data 保存，然后在新服务器的对应位置重新覆盖原文档。
+
+
+
+配置路径参数在 /var/lib/docker/containers/ID/ hostconfig.yaml （对应容器的启动参数）里面。ID是对应容器的ID号
+
+但是在移动过后，可能会出现无法编译的情况。
+
+#用回原本docker.socket里面的sharerelatex，就可以用了
+
+
+
+## 在线latex的优势
+
+优势：速度更快，网络更加稳定。档案维护方便
+
+不足（这个通过frp解决了）：实验室有时候局域网不够稳定，没有专人维护，备份麻烦。在校外需要easyconnect
+
+[Creating and managing users · overleaf/overleaf Wiki (github.com)](https://github.com/overleaf/overleaf/wiki/Creating-and-managing-users)
+
+## 目前的问题&解决方案
+
+1. github的同步还没有办法实现
+2. texlive版本的控制没有实现
+
+
+
+
+
+# 服务器Docker信息(1.0.0)
+
+
+
+
+
+## 网络连接
+
+实验室内网： 90.0.0.21:8888
+
+校园网：202.114.107.125:9988
+
+公网：139.224.114.64:8888
+
+
+
+## 容器信息
+
+容器位置：/var/snap/docker/common/var-lib-docker/container
+
+容器开机自启动
+
+容器信息：
+
+```bash
+wh@wh-ubuntu:~$ docker ps -a
+CONTAINER ID   IMAGE                   COMMAND                  CREATED        STATUS         PORTS                                   NAMES
+f44a2f458699   sharelatex/sharelatex   "/sbin/my_init"          44 hours ago   Up 4 minutes   0.0.0.0:8888->80/tcp, :::8888->80/tcp   sharelatex
+bd58670906ec   mongo:latest            "docker-entrypoint.s…"   44 hours ago   Up 4 minutes   27017/tcp                               sharemongo
+83814a2f5fd6   redis:latest            "docker-entrypoint.s…"   44 hours ago   Up 4 minutes   6379/tcp                                shareredis
+```
+
+
+
+
+
+## 修改容器启动参数
+
+sharelatex  需要重启机器才能修改参数（以后看看有没有方法可以关闭socket并开启的）
+
+```
+vim /var/snap/docker/common/var-lib-docker/containers/ID/config.v2.json
+# 修改对应参数
+#sudo reboot
+```
+
+
+
+## 数据位置
+
+sharelatex：
+
+```
+/home/wh/sharelatex_data
+```
+
+mongo:
+
+```
+/home/wh/mongo_data
+```
+
+
+
+
+
+
+
+http://90.0.0.21:8888/7363986933ytypkqkgvzdg

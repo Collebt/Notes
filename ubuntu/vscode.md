@@ -43,3 +43,66 @@ Host microsoft_in
     
 ```
 
+
+
+
+
+## TODO tree setting
+
+
+
+```
+//todo tree
+    "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)\\s*($TAGS):|^\\s*- \\[ \\])",
+    "todo-tree.general.tags": [
+        "TODO",
+        "FIXME",
+        "TAG",
+        "DONE",
+        "NOTE"
+    ],
+    "todo-tree.regex.regexCaseSensitive": false,
+    // "todo-tree.tree.showCountsInTree": false,
+    "todo-tree.highlights.defaultHighlight": {
+        "foreground": "black",
+        "background": "yellow",
+        "icon": "check",
+        "rulerColour": "yellow",
+        "type": "tag",
+        "iconColour": "yellow",
+        "opacity": 100,
+    },
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            "background": "white",
+            "rulerColour": "gray",
+            "iconColour": "white"
+        },
+        "FIXME": {
+            "background": "purple",
+            "icon": "beaker",
+            "rulerColour": "purple",
+            "iconColour": "purple",
+        },
+        "TAG": {
+            "background": "blue",
+            "icon": "tag",
+            "rulerColour": "blue",
+            "iconColour": "blue",
+            "rulerLane": "full"
+        },
+        "DONE": {
+            "background": "green",
+            "icon": "issue-closed",
+            "rulerColour": "green",
+            "iconColour": "green",
+        },
+        "NOTE": {
+            "background": "#7fb785",
+            "icon": "note",
+            "rulerColour": "#7fb785",
+            "iconColour": "#7fb785",
+        }
+    },
+```
+

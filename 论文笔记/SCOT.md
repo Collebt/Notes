@@ -174,7 +174,7 @@ $$
 
 
 
-### Sinkhorn algorithm 流程（得到归一化的匹配矩阵
+### Sinkhorn algorithm 流程（得到归一化的匹配矩阵)
 
 ---
 
@@ -192,9 +192,23 @@ $$
 
 Output: $T=diag({\bf a}){\bf K}diag({\bf b})$
 
+
+
+
+
+**while** $t \le t_{max}$ and not converge **do**
+
+​	${\bf K} = {\bf K} / ({\bf K 1})$
+
+​	${\bf K} = {\bf K} / ({\bf K^{\top} 1})$
+
+**end while**
+
 ---
 
 ## 实验验证
+
+
 
 ### 假设
 

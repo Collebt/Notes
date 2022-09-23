@@ -72,3 +72,39 @@ pip install -r requirements.txt
 
 1. 拷贝环境到anacondas3/envs
 2. 打开 `conda create -n NewName --clone ~/path(环境的位置)`
+
+
+
+
+
+## Conda 安装gdal
+
+gdal的安装比较困难，用常规方法还会报错。。
+
+特此记录一下，主要是软件包的连接库要调一下
+
+```
+conda install -c conda-forge gdal #使用特定软件库下载
+
+gdalinfo --version #查看是否安装成功
+```
+
+
+
+### 出现报错的解决方法
+
+ *ImportError: libtbb.so.2: cannot open shared object file: No such file or directory*
+
+```
+conda config --set channel_priority strict
+conda update -c conda-forge gdal
+```
+
+
+
+### python 导入
+
+```
+from osgeo import gdal
+```
+
