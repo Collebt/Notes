@@ -1,6 +1,6 @@
 # TNT（TrackletNet Tracker）
 
-![在这里插入图片描述](../20191219192316678.png)
+![TNT](20191219192316678.png)
 
 
 
@@ -12,9 +12,9 @@
 $$
 c = ln(\frac{1-p_e}{p_e})
 $$
-<img src="../image-20210302110405074.png" alt="image-20210302110405074" style="zoom: 25%;" />
+<img src="image-20210302110405074.png" alt="image-20210302110405074" style="zoom: 25%;" />
 
 TrackNet相似度网络结构如下：
 
-![image-20210302110500079](../image-20210302110500079.png)
+![image-20210302110500079](image-20210302110500079.png)
 

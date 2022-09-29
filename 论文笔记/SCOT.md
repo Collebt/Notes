@@ -83,7 +83,7 @@ feature 之间计算相似性（两两像素之间计算），使用归一化内
 $$
 C = \frac{f_s \cdot f_t^T }{||f_s||\cdot||f_t||} \in R^{h_s \times w_s \times h_t \times h_s}
 $$
-<img src="../image-20201202162208491.png" style="zoom:25%;" />
+<img src="image-20201202162208491.png" style="zoom:25%;" />
 
 OT问题变为求最大值
 $$
@@ -120,9 +120,9 @@ SCOT比前人工作（semantic alignment）要好:
 
 CAM是
 
-<img src="..\image-20201203232201915.png" style="zoom: 25%;" />
+<img src="image-20201203232201915.png" style="zoom: 25%;" />
 
-<img src="..\image-20201203232234143.png" style="zoom: 25%;" />
+<img src="image-20201203232234143.png" style="zoom: 25%;" />
 
 # 对存在问题的解决方法
 
@@ -140,7 +140,7 @@ CAM是
 
 根据最优传输理论，目的是匹配两组特征点$X = \{s_i\}^{n_s}_{i=1},X\in R^{f \times n_s}$和$ Y = \{y_j\}^{n_t}_{j=1}, Y\in R^{f \times n_t}$， 它们对应的分布是$\mu_s = \sum\limits ^{n_s} _ {i=1} p^s_i \delta(x_i)，\mu_t = \sum\limits ^{n_st} _ {j=1} p^s_i \delta(y_j)$ ， $\mu_s$ 和$\mu_t$表示的是$X,Y$中元素的重要程度。损失矩阵cost matrix 表示从$x_i$到$y_j$匹配需要的代价，在匹配问题中对应的是特征向量之间的距离。
 
-<img src="..\optimal transport of feature cost.png" alt="optimal transport of feature cost" style="zoom:25%;" />
+<img src="optimal transport of feature cost.png" alt="optimal transport of feature cost" style="zoom:25%;" />
 
 ## 论文带来的思考
 
@@ -170,7 +170,7 @@ $$
 
 可视化的图像对比如图所示：
 
-<img src="..\image-20201202173457430.png" style="zoom: 25%;" />
+<img src="image-20201202173457430.png" style="zoom: 25%;" />
 
 
 

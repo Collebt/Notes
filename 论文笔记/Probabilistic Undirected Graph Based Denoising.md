@@ -1,5 +1,5 @@
 # Probabilistic Undirected Graph Based Denoising Method for Dynamic Vision Sensor
-<img src="../image-20210311101202239.png" alt="image-20210311101202239" style="zoom:33%;" />
+<img src="image-20210311101202239.png" alt="image-20210311101202239" style="zoom:33%;" />
 
 
 

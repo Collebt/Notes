@@ -36,7 +36,7 @@ curl -sSL https://get.daocloud.io/docker | sh
 
 安装成功展示
 
-![image-20210617152718569](image-20210617152718569.png)
+![image-20210617152718569](image-202106171527185692.png)
 
 ### 安装支持库
 

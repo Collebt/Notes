@@ -1,6 +1,6 @@
 # SPOT 切片局部分配最有传输
 
-<img src="../image-20210315162552710.png" alt="image-20210315162552710" style="zoom:25%;" />
+<img src="image-20210315162552710.png" alt="image-20210315162552710" style="zoom:25%;" />
 
 匹配问题定义：
 
