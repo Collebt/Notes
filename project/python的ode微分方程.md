@@ -58,7 +58,7 @@ result:
 
 <img src="image-20210609222655483.png" alt="image-20210609222655483" style="zoom:50%;" />
 
-- 多元一介方程
+- 多元one-order方程
   $$
   \frac{ds}{dt} = -R0(s(t), i(t))s(t)i(t),\\
   \frac{di}{dt} = R0(s(t), i(t))s(t)i(t) - i(t),
