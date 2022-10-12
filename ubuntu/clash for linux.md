@@ -170,3 +170,13 @@ proxy-groups:
 ```
 
 https://docs.gtk.pw/contents/configfile.html#格式
+
+
+
+
+
+## 设置直连
+
+![image-20221005202810352](image-20221005202810352.png)
+
+在使用内网的服务器时，会由于代理无法找到内网的网址，这时候需要打开对应的config.yaml文件，在DIRECT上添加90.0.0.0/10， 就可以直连内网了。

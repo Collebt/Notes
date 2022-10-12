@@ -138,7 +138,7 @@ CAM是
 
 ## 对工作的理解
 
-根据最优传输理论，目的是匹配两组特征点$X = \{s_i\}^{n_s}_{i=1},X\in R^{f \times n_s}$和$ Y = \{y_j\}^{n_t}_{j=1}, Y\in R^{f \times n_t}$， 它们对应的分布是$\mu_s = \sum\limits ^{n_s} _ {i=1} p^s_i \delta(x_i)，\mu_t = \sum\limits ^{n_st} _ {j=1} p^s_i \delta(y_j)$ ， $\mu_s$ 和$\mu_t$表示的是$X,Y$中元素的重要程度。损失矩阵cost matrix 表示从$x_i$到$y_j$匹配需要的代价，在匹配问题中对应的是特征向量之间的距离。
+根据最优传输理论，目的是匹配两组特征点$X = \{s_i\}^{n_s}_{i=1},X\in R^{f \times n_s}$ 和 $ Y = \{y_j\}^{n_t}_{j=1}, Y\in R^{f \times n_t}$， 它们对应的分布是$\mu_s = \sum\limits ^{n_s} _ {i=1} p^s_i \delta(x_i)，\mu_t = \sum\limits ^{n_st} _ {j=1} p^s_i \delta(y_j)$ ， $\mu_s$ 和$\mu_t$表示的是$X,Y$中元素的重要程度。损失矩阵cost matrix 表示从$x_i$到$y_j$匹配需要的代价，在匹配问题中对应的是特征向量之间的距离。
 
 <img src="optimal transport of feature cost.png" alt="optimal transport of feature cost" style="zoom:25%;" />
 
@@ -178,7 +178,7 @@ $$
 
 ---
 
-**input**: $\mu_s,\mu_t, {\bf M}, \epsilon, t_{max}$
+**input**: $ \mu_s,\mu_t, {\bf M}, \epsilon, t_{max} $
 
 **Initialize** : ${\bf K} = e^{-M/\epsilon }, b\gets 1, t\gets 0$
 
