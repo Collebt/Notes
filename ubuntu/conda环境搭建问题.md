@@ -18,3 +18,7 @@ export PATH=$PATH:/home/wh/anaconda3/bin
 
 再运行`conda info --envs`，出现提示即为成功
 
+
+
+
+

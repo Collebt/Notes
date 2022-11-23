@@ -13,7 +13,7 @@
 **新服务器要上传公钥到github上**
 
 - ssh-keygen生成密钥
-- vim /.ssh/id_rsa.pub复制内容到github上
+- 复制内容到github上
 
 **配置用户信息**
 
@@ -27,6 +27,7 @@ git config --global user.email "1054541662@qq.com"
 ```bash
 git remote -n name git@xxxx.git
 git remote add name git@xxxx.git #create
+git remote add master git@github.com:Collebt/code_aux_my.git #my example
 ```
 
 

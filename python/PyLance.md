@@ -24,7 +24,7 @@
 
 将"python for vscode"插件删除就可以了。
 
-应该是python for vscode 和python相互冲突了。
+应该是python for vscode 和python插件相互冲突了。
 
 > 类型提示会存储在函数的 `__annotations__` 属性中。
 
