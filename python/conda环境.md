@@ -70,10 +70,16 @@ pip install -r requirements.txt
 
 ## 复制环境
 
-1. 拷贝环境到anacondas3/envs
-2. 打开 `conda create -n NewName --clone ~/path(环境的位置)`
+1. 拷贝想复制的环境文件夹到目标服务器的anacondas3/envs/NewName
+2. 打开终端： `conda create -n NewName --clone ~/path(环境的位置)`
 
 
+
+## 删除环境
+
+```
+conda remove --name ENV_NAME --all 
+```
 
 
 
@@ -106,5 +112,17 @@ conda update -c conda-forge gdal
 
 ```
 from osgeo import gdal
+```
+
+
+
+
+
+### conda 安装常用包
+
+cv2
+
+```
+conda install -c conda-forge opencv
 ```
 

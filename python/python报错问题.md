@@ -1,6 +1,6 @@
 # Ubuntu vscode无法画图
 
-==最终方案==：使用`plt.savefig()`函数，直接保存图像，方便后期记录，也不占用显式资源。
+==最终方案==：使用`plt.savefig()`函数，直接保存图像，方便后期记录，也不占用显示资源。但是也会遭遇报错问题，用`export DISPLAY=:0.0`解决
 
 
 
@@ -29,3 +29,12 @@
 在代码首行添加是没用的,代码在运行过程中终端被修改了。
 
 某些库import的过程中会修改matplotlib的终端类型,因此要在debug前面一句之前加入修改
+
+
+
+或者在命令行输入，（当上面的命令无效的时候可以使用）
+
+```
+echo "backend: Agg" > ~/.config/matplotlib/matplotlibrc
+```
+

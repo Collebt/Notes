@@ -119,3 +119,25 @@ git commit -m ".gitignore is now working"
 ```
 
 To undo `git rm --cached filename`, use `git add filename`
+
+
+
+
+
+## Commit 撤回和版本撤回
+
+撤回commit和对应的文件记录。
+
+```
+git reflog 查看版本记录, 找到要撤回的编号或者HEAD
+git reset HEAD@{N} / git reset asd2asf
+```
+
+
+
+退回对因commit版本，将文件也返回到当初状态
+
+```
+git reset --hard HEAD@{N} 
+```
+

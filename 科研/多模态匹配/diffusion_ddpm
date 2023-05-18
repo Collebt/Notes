@@ -1,0 +1,53 @@
+## sar_dpdm 代码阅读
+
+
+
+```
+
+x_start.shape  = ([1, 3, 256, 256]) = SR
+t.shape = 1
+
+noise = th.randn_like(x_start)
+noise = ([1, 3, 256, 256]) 
+
+x_disto_start=  SR
+
+x_t = self.q_sample(x_start, t, noise=noise)
+```
+
+
+
+
+
+采样(GaussianDiffusion)：在给定的时间步长集self.sqrt_alphas_cumprod中，按照t的索引计算x_start和noise之间的插值采样
+
+```
+GaussianDiffusion.q_sample(self, x_start, t, noise=None)
+```
+
+
+
+在t时间上的x_t和sar_imagee拼接作为dmodel 的输入
+
+model 的 输入
+
+```
+model_output = model(model_inp, self._scale_timesteps(t), **model_kwargs)
+```
+
+
+
+
+
+
+
+- model
+
+time embedding: 时间首先归一化［０，１］之间，再进行 sin+ocs 傅利叶变换时间．
+
+
+
+
+
+
+
